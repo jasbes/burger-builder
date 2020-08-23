@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.css';
 
 interface Ingredient {
-    name: string;
+    type: string;
     amount: number;
 }
 
@@ -14,7 +14,7 @@ interface BurgerIngredientProps {
 const BurgerIngredient:React.FC<BurgerIngredientProps> = (props) => {
     let ingredient = null;
 
-    switch ( props.ingredient.name ) {
+    switch ( props.ingredient.type ) {
         case ( 'bread-bottom' ):
             ingredient = <div className="bread-bottom"></div>;
             break;

@@ -10,10 +10,22 @@ const controls = [
   {label: 'Meat', type: 'meat'}
 ];
 
-const BuildControls: React.FC = () => {
+interface BuildControlsProps {
+  handleAddIngredient(type: string): void;
+  handleRemoveIngredient(type: string): void;
+}
+
+const BuildControls: React.FC<BuildControlsProps> = (props) => {
   return (
     <div className="build-controls">
-      {controls.map(ctrl => <BuildControl key={ctrl.label} label={ctrl.label} />)}
+      {controls.map(
+        ctrl => <BuildControl 
+                  key={ctrl.label} 
+                  label={ctrl.label} 
+                  more={() => props.handleAddIngredient(ctrl.type)}
+                  less={() => props.handleRemoveIngredient(ctrl.type)}
+                />
+      )}
     </div>
   );
 }

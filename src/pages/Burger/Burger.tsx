@@ -5,7 +5,7 @@ import BurgerIngredient  from './BurgerIngredient';
 import './styles.css';
 
 interface Ingredient {
-    name: string;
+    type: string;
     amount: number;
 }
 
@@ -16,11 +16,11 @@ interface BurgerProps {
 const Burger: React.FC<BurgerProps> = (props) => {
   return (
       <div className="burger">
-        <BurgerIngredient ingredient={{name: 'bread-top', amount: 1}}  />
+        <BurgerIngredient ingredient={{type: 'bread-top', amount: 1}}  />
         {
             getIngredients(props.ingredients)
         }
-        <BurgerIngredient ingredient={{name: 'bread-bottom', amount: 1}}  />
+        <BurgerIngredient ingredient={{type: 'bread-bottom', amount: 1}}  />
       </div>
   );
 }
@@ -34,7 +34,7 @@ const getIngredients = (ingredients: Ingredient[]) => {
                 return ingredients.map(
                     ingredient => [...Array(ingredient.amount)]
                         .map((_, i) => {
-                            return <BurgerIngredient key={ingredient.name+i} ingredient={ingredient}  />;
+                            return <BurgerIngredient key={ingredient.type+i} ingredient={ingredient}  />;
                         })
                 )
         } else {
